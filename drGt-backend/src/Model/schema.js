@@ -17,7 +17,7 @@ const vehiclesSchema = new mongoose.Schema({
   monthlyMeters: { type: Array, required: true },
   weeklyMeters: { type: Array, required: true },
   dailyMeters: { type: Array, required: true },
-  vehicleConsumptionMetersPerLiters: { type: Number, required: true },
+  vehicleConsumptionMetersPerLiter: { type: Number, required: true },
 });
 
 // Wrapping and exporting the schema

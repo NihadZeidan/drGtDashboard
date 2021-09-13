@@ -3,6 +3,7 @@
 import express from "express";
 import vehiclesSchema from "../Model/schema.js";
 const router = express.Router();
+import SummeryCalculator from "./summeryCalculator.js";
 
 router.post("/add-vehicle", async (req, res) => {
   // Request the data from the header request (Body)
@@ -33,7 +34,7 @@ router.post("/add-vehicle", async (req, res) => {
   });
 
   // To transform from kilos/galen to meters/liters
-  const vehicleConsumptionMetersPerLiters = (vehicleKMConsumption / 20) * 1000;
+  const vehicleConsumptionMetersPerLiter = (vehicleKMConsumption / 20) * 1000;
 
   try {
     //   Save to database
@@ -43,7 +44,7 @@ router.post("/add-vehicle", async (req, res) => {
       monthlyMeters,
       weeklyMeters: perWeek,
       dailyMeters: perDay,
-      vehicleConsumptionMetersPerLiters,
+      vehicleConsumptionMetersPerLiter,
     }).save();
 
     // Response
@@ -52,7 +53,7 @@ router.post("/add-vehicle", async (req, res) => {
       info: saveToDB,
     });
   } catch (e) {
-    res.send("Error in sending data");
+    res.send("Something went wrong in the server");
     console.error(e);
   }
 });
@@ -68,7 +69,7 @@ router.get("/vehicle-status", async (req, res) => {
 
     res.status(200).json({ data: vehiclesStatus });
   } catch (e) {
-    send("Something went wrong");
+    res.send("Something went wrong in the server");
     console.error(e);
   }
 });
@@ -84,13 +85,13 @@ router.get("/vehicle-condition", async (req, res) => {
 
     res.status(200).json({ data: vehiclesCondition });
   } catch (e) {
-    send("Something went wrong");
+    res.send("Something went wrong in the server");
     console.error(e);
   }
 });
 
 // Get all vehicles' meter/liter info
-router.get("/vehicle-meter-liter", async (req, res) => {
+router.get("/vehicle-fuel", async (req, res) => {
   try {
     let allData = await vehiclesSchema.find();
 
@@ -98,6 +99,7 @@ router.get("/vehicle-meter-liter", async (req, res) => {
     const perMonth = allData.map((eachCar) => {
       return eachCar.monthlyMeters;
     });
+
     const perWeek = allData.map((eachCar) => {
       return eachCar.weeklyMeters;
     });
@@ -105,9 +107,24 @@ router.get("/vehicle-meter-liter", async (req, res) => {
       return eachCar.dailyMeters;
     });
 
-    res.status(200).json({ monthly: perMonth, weekly: perWeek, daily: perDay });
+    // Calculate all vehicles meters per month, week and day
+    let monthsSummery = SummeryCalculator.Summery(perMonth);
+    let weeksSummery = SummeryCalculator.Summery(perWeek);
+    let daysSummery = SummeryCalculator.Summery(perDay);
+
+    // Calculate all vehicles consumption meters/liter
+    let allCarsConsumptionMetersPerLiter = allData.reduce((prev, current) => {
+      return (prev += current.vehicleConsumptionMetersPerLiter);
+    }, 0);
+
+    res.status(200).json({
+      monthsSummery,
+      weeksSummery,
+      daysSummery,
+      allCarsConsumptionMetersPerLiter,
+    });
   } catch (e) {
-    send("Something went wrong");
+    res.send("Something went wrong in the server");
     console.error(e);
   }
 });
