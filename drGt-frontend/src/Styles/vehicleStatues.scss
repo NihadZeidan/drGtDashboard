@@ -1,0 +1,63 @@
+#container {
+  font-size: 20px;
+  width: 20%;
+  height: 20%;
+  background-color: #ffffff;
+  display: inline-block;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1%;
+
+  .title {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .btn {
+    display: inline-block;
+    margin-left: 20%;
+    font-size: 15px;
+    background-color: #ffff;
+    border: none;
+    color: blue;
+    cursor: pointer;
+  }
+  #activeCount,
+  #inactiveCount,
+  #inShopCount {
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding: 1%;
+    margin-left: 45%;
+    width: 15px;
+  }
+  #activeCount {
+    background-color: #18cc6c;
+  }
+  .inactiveContainer {
+    background-color: #f6f7f7;
+    display: flex;
+    p:first-of-type {
+      width: 25%;
+      padding-left: 2%;
+    }
+    #inactiveCount {
+      background-color: #0074d9;
+    }
+  }
+
+  #inShopCount {
+    background-color: #e69120;
+  }
+
+  .subContainer {
+    p:first-of-type {
+      width: 25%;
+      padding-left: 2%;
+    }
+    display: flex;
+  }
+}
