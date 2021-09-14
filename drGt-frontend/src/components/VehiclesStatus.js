@@ -9,7 +9,7 @@ function VehiclesStatus() {
   //   When component did mount get all vehicles state from the backend
   useEffect(() => {
     superAgent
-      .get("http://localhost:3050/vehicle-status")
+      .get("https://drgt-backend.herokuapp.com/vehicle-status")
       .then((result) => {
         // Count each state
         let active = 0;

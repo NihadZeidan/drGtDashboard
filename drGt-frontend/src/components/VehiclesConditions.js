@@ -11,7 +11,7 @@ function VehicleConditions() {
   //   When component did mount update my global state from the back-end
   useEffect(() => {
     superAgent
-      .get("http://localhost:3050/vehicle-condition")
+      .get("https://drgt-backend.herokuapp.com/vehicle-condition")
       .then((result) => {
         // Count each condition
         let good = 0;

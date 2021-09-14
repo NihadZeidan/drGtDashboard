@@ -18,7 +18,7 @@ function FuelCosts() {
   // When Component did mount get the data from the backend
   useEffect(() => {
     superAgent
-      .get("http://localhost:3050/vehicle-fuel")
+      .get("https://drgt-backend.herokuapp.com/vehicle-fuel")
       .then((result) => {
         //   Update the state
         setFuelCosts(result.body);
