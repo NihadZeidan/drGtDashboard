@@ -108,9 +108,56 @@ router.get("/vehicle-fuel", async (req, res) => {
     });
 
     // Calculate all vehicles meters per month, week and day
-    let monthsSummery = SummeryCalculator.Summery(perMonth);
-    let weeksSummery = SummeryCalculator.Summery(perWeek);
-    let daysSummery = SummeryCalculator.Summery(perDay);
+    let monthsSummery = [
+      { name: "Jan", uv: SummeryCalculator.Summery(perMonth)[0] },
+      { name: "Feb", uv: SummeryCalculator.Summery(perMonth)[1] },
+      { name: "Mar", uv: SummeryCalculator.Summery(perMonth)[2] },
+      { name: "Apr", uv: SummeryCalculator.Summery(perMonth)[3] },
+      { name: "May", uv: SummeryCalculator.Summery(perMonth)[4] },
+      { name: "Jun", uv: SummeryCalculator.Summery(perMonth)[5] },
+    ];
+
+    // 4 weeks a month
+    let weeksSummery = [
+      { name: "1st week", uv: SummeryCalculator.Summery(perWeek)[0] },
+      { name: "2nd week", uv: SummeryCalculator.Summery(perWeek)[1] },
+      { name: "3rd week", uv: SummeryCalculator.Summery(perWeek)[2] },
+      { name: "4th week", uv: SummeryCalculator.Summery(perWeek)[3] },
+    ];
+
+    // 30 days a month
+    let daysSummery = [
+      { name: "1", uv: SummeryCalculator.Summery(perDay)[0].toFixed(1) },
+      { name: "2", uv: SummeryCalculator.Summery(perDay)[1].toFixed(1) },
+      { name: "3", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "4", uv: SummeryCalculator.Summery(perDay)[3].toFixed(1) },
+      { name: "5", uv: SummeryCalculator.Summery(perDay)[4].toFixed(1) },
+      { name: "6", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "7", uv: SummeryCalculator.Summery(perDay)[0].toFixed(1) },
+      { name: "8", uv: SummeryCalculator.Summery(perDay)[1].toFixed(1) },
+      { name: "9", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "10", uv: SummeryCalculator.Summery(perDay)[3].toFixed(1) },
+      { name: "11", uv: SummeryCalculator.Summery(perDay)[4].toFixed(1) },
+      { name: "12", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "13", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "14", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "15", uv: SummeryCalculator.Summery(perDay)[0].toFixed(1) },
+      { name: "16", uv: SummeryCalculator.Summery(perDay)[1].toFixed(1) },
+      { name: "17", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "18", uv: SummeryCalculator.Summery(perDay)[3].toFixed(1) },
+      { name: "19", uv: SummeryCalculator.Summery(perDay)[4].toFixed(1) },
+      { name: "20", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "21", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+      { name: "22", uv: SummeryCalculator.Summery(perDay)[4].toFixed(1) },
+      { name: "23", uv: SummeryCalculator.Summery(perDay)[3].toFixed(1) },
+      { name: "24", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "25", uv: SummeryCalculator.Summery(perDay)[1].toFixed(1) },
+      { name: "26", uv: SummeryCalculator.Summery(perDay)[0].toFixed(1) },
+      { name: "27", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "28", uv: SummeryCalculator.Summery(perDay)[2].toFixed(1) },
+      { name: "29", uv: SummeryCalculator.Summery(perDay)[3].toFixed(1) },
+      { name: "30", uv: SummeryCalculator.Summery(perDay)[5].toFixed(1) },
+    ];
 
     // Calculate all vehicles consumption meters/liter
     let allCarsConsumptionMetersPerLiter = allData.reduce((prev, current) => {

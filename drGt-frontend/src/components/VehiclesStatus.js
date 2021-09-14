@@ -34,7 +34,7 @@ function VehiclesStatus() {
   return (
     <div id="container">
       <p className="title">Vehicle Status</p>
-      <button className="btn">Details ></button>
+      <button className="btn">Details ...</button>
       <div className="subContainer">
         <p>Active</p> <p id="activeCount">{vehicleStatus.active}</p>
       </div>

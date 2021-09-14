@@ -1,0 +1,39 @@
+#fuelMainContainer {
+  display: inline-block;
+  width: 48%;
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: 1%;
+  background-color: #fbfdff;
+  padding: 2%;
+  border: 1px solid rgba(206, 198, 198, 0.644);
+  .fuelTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(206, 198, 198, 0.644);
+  }
+  #btns {
+    float: right;
+    width: 28%;
+    button {
+      background-color: #62bdee;
+      margin: 2%;
+      padding: 1%;
+      font-family: auto;
+    }
+  }
+  #info {
+    width: 40%;
+    text-align: left;
+    .head {
+      color: #b6adc3;
+      font-size: 1em;
+      height: 4px;
+    }
+    .content {
+      color: black;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+}

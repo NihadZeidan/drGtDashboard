@@ -1,0 +1,64 @@
+#mainContainer {
+  width: 41%;
+  float: right;
+  border: 1px solid rgba(206, 198, 198, 0.644);
+  padding: 2%;
+  margin-top: 3%;
+
+  .mainTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+}
+
+#coniditonsContainer {
+  display: flex;
+  flex-direction: row;
+
+  #goodContainer,
+  #satisfactoryContainer,
+  #criticalContainer {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(206, 198, 198, 0.644);
+    padding: 3%;
+    height: 27em;
+
+    .Title {
+      font-size: 1.3em;
+      font-family: auto;
+      text-align: center;
+    }
+
+    .count {
+      border-top: 1px solid rgba(206, 198, 198, 0.644);
+      color: black;
+      text-align: center;
+      padding: 15%;
+      font-size: 1.2em;
+      p {
+        font-size: 1.2em;
+        color: #c1c5c5;
+      }
+    }
+  }
+
+  #goodContainer {
+    .Title {
+      color: #37bc7f;
+    }
+  }
+
+  #satisfactoryContainer {
+    .Title {
+      color: #ffbb53;
+    }
+  }
+
+  #criticalContainer {
+    .Title {
+      color: #ef6353;
+    }
+  }
+}
