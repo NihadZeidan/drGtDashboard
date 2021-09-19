@@ -23,7 +23,7 @@ function FuelCosts() {
       .then((result) => {
         //   Update the state
         setFuelCosts(result.body);
-        // This state to display different time period month, week or day (default= month)
+        // This state to display different time period month, week or day (default = month)
         setDisplayData(result.body.monthsSummery);
       })
       .catch((e) => console.error(e));
@@ -67,7 +67,7 @@ function FuelCosts() {
         </p>
       </div>
       <ResponsiveContainer width={700}
-        height={350}>
+        height={335}>
 
         <AreaChart
 
